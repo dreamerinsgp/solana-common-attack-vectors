@@ -7,13 +7,13 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-type_cosplay = "J7Q6qZK86gGobrZbyHMBD5Wx9etRfGQK4sZ4XaWPnhfu"
+type_cosplay = "DvfEttKg2MprhUAE3LHoicZMy7dKduD7psKLgbJP5Dsk"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "localnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

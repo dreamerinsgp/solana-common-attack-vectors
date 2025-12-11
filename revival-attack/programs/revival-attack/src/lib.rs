@@ -87,6 +87,7 @@ pub struct CloseMetadata<'info> {
     pub creator: Signer<'info>,
     #[account(
         mut,
+        close=creator,
         seeds=[b"secret_metadata",creator.key().as_ref()],
         bump,
     )]

@@ -111,13 +111,8 @@ describe("account-data-matching", () => {
     );
     assert.strictEqual(NEW_VAULT_DATA_SECURE, vaultAccountData.data);
   });
-
-  // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
-  // | | | | | | | | | | | | | | | | | | | | |
-  //           ADD YOUR CODE ABOVE
-  // | | | | | | | | | | | | | | | | | | | | |
-  // x x x x x x x x x x x x x x x x x x x x x
 });
+
 export async function airdrop(
   connection: any,
   address: any,

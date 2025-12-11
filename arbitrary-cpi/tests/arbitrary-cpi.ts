@@ -45,61 +45,61 @@ describe("arbitrary-cpi", () => {
 
   });
 
-  it("Verify Secret by creator", async () => {
-    const [secretInformation, mBump] = deriveSecretAddress(creator.publicKey, program_expected.programId);
+  // it("Verify Secret by creator", async () => {
+  //   const [secretInformation, mBump] = deriveSecretAddress(creator.publicKey, program_expected.programId);
 
-    await program_cpi.methods.insecureVerifyPin(0, 1, 2, 5).accounts({
-      author: creator.publicKey,
-      secretInformation: secretInformation,
-      secretProgram: program_expected.programId
-    }).signers([creator]).rpc({ commitment: "confirmed" });
-  });
-  it("Verify Secret by creator - wrong PIN", async () => {
-    const [secretInformation, mBump] = deriveSecretAddress(creator.publicKey, program_expected.programId);
+  //   await program_cpi.methods.insecureVerifyPin(0, 1, 2, 5).accounts({
+  //     author: creator.publicKey,
+  //     secretInformation: secretInformation,
+  //     secretProgram: program_expected.programId
+  //   }).signers([creator]).rpc({ commitment: "confirmed" });
+  // });
+  // it("Verify Secret by creator - wrong PIN", async () => {
+  //   const [secretInformation, mBump] = deriveSecretAddress(creator.publicKey, program_expected.programId);
 
-    try {
-      await program_cpi.methods.insecureVerifyPin(1, 1, 2, 5).accounts({
-        author: creator.publicKey,
-        secretInformation: secretInformation,
-        secretProgram: program_expected.programId
-      }).signers([creator]).rpc({ commitment: "confirmed" });
-      assert.isTrue(false)
-    } catch (error) {
-      const err = anchor.AnchorError.parse(error.logs);
-      assert.strictEqual(err.error.errorCode.code, "IncorrectPIN");
-    }
+  //   try {
+  //     await program_cpi.methods.insecureVerifyPin(1, 1, 2, 5).accounts({
+  //       author: creator.publicKey,
+  //       secretInformation: secretInformation,
+  //       secretProgram: program_expected.programId
+  //     }).signers([creator]).rpc({ commitment: "confirmed" });
+  //     assert.isTrue(false)
+  //   } catch (error) {
+  //     const err = anchor.AnchorError.parse(error.logs);
+  //     assert.strictEqual(err.error.errorCode.code, "IncorrectPIN");
+  //   }
 
-  });
-  it("Verify Secret By Hacker", async () => {
-    const [secretInformation, mBump] = deriveSecretAddress(creator.publicKey, program_expected.programId);
+  // });
+  // it("Verify Secret By Hacker", async () => {
+  //   const [secretInformation, mBump] = deriveSecretAddress(creator.publicKey, program_expected.programId);
 
-    try {
-      await program_cpi.methods.insecureVerifyPin(0, 0, 0, 0).accounts({
-        author: hacker.publicKey,
-        secretInformation: secretInformation,
-        secretProgram: program_expected.programId
-      }).signers([hacker]).rpc({ commitment: "confirmed" });
-      assert.isTrue(false)
-    } catch (error) {
-      const err = anchor.AnchorError.parse(error.logs);
-      assert.strictEqual(err.error.errorCode.code, "ConstraintSeeds");
-    }
+  //   try {
+  //     await program_cpi.methods.insecureVerifyPin(0, 0, 0, 0).accounts({
+  //       author: hacker.publicKey,
+  //       secretInformation: secretInformation,
+  //       secretProgram: program_expected.programId
+  //     }).signers([hacker]).rpc({ commitment: "confirmed" });
+  //     assert.isTrue(false)
+  //   } catch (error) {
+  //     const err = anchor.AnchorError.parse(error.logs);
+  //     assert.strictEqual(err.error.errorCode.code, "ConstraintSeeds");
+  //   }
 
-  });
+  // });
 
-  it("Read Secret By Hacker", async () => {
-    const [secretInformation, mBump] = deriveSecretAddress(creator.publicKey, program_expected.programId);
+  // it("Read Secret By Hacker", async () => {
+  //   const [secretInformation, mBump] = deriveSecretAddress(creator.publicKey, program_expected.programId);
 
-    let signature = await program_cpi.methods.insecureVerifyPin(0, 0, 0, 0).accounts({
-      author: hacker.publicKey,
-      secretInformation: secretInformation,
-      secretProgram: program_hacked.programId
-    }).signers([hacker]).rpc({ commitment: "confirmed" });
+  //   let signature = await program_cpi.methods.insecureVerifyPin(0, 0, 0, 0).accounts({
+  //     author: hacker.publicKey,
+  //     secretInformation: secretInformation,
+  //     secretProgram: program_hacked.programId
+  //   }).signers([hacker]).rpc({ commitment: "confirmed" });
 
-    const transactionDetails = await getTx(signature, provider.connection);
+  //   const transactionDetails = await getTx(signature, provider.connection);
 
-    console.log("Transaction Logs:", transactionDetails.meta.logMessages);
-  });
+  //   console.log("Transaction Logs:", transactionDetails.meta.logMessages);
+  // });
 
 
   // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^

@@ -98,7 +98,7 @@ describe("pda-privileges", () => {
     await program.methods
       .insecureWithdraw()
       .accounts({
-        creator: hacker.publicKey,
+        vaultCreator: hacker.publicKey,
         vault: creatorVaultAddress,
         withdrawDestination: hackerVaultAddress,
         metadataAccount: creatorMetadataAddress,
@@ -137,6 +137,7 @@ describe("pda-privileges", () => {
           .signers([hacker])
           .rpc({ commitment: "confirmed" });
       } catch (error) {
+        console.log("failed transaction")
         const err = anchor.AnchorError.parse(error.logs);
         assert.strictEqual(err.error.errorCode.code, "ConstraintHasOne");
       }

@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("4XApRiRJQ2GEVLGCsmrPjDWgakyMWxCJ9pYtEgEEvcFp");
+declare_id!("3NqRcrDYL7Ky5Yj5fv6q2QtGrVAPfHpqLny7A6FaWNRr");
 
 #[program]
 pub mod arbitrary_cpi_expected {

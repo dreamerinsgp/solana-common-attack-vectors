@@ -9,13 +9,13 @@ skip-lint = false
 [programs.localnet]
 arbitrary-cpi-expected = "4XApRiRJQ2GEVLGCsmrPjDWgakyMWxCJ9pYtEgEEvcFp"
 arbitrary-cpi-hacked = "2g2FFyS69XPCNxZ6ouKRQB2jWSjgAiG2LVCfd9J8co4d"
-arbitrary_cpi = "44C7R1FuGPwn559MhjPBCV5sZjibH5NvByF5KPVuGYXn"
+arbitrary_cpi = "puZbSDM45vDHXpbMVaoL2h4B3KjYXs9q7SygubCq3yp"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "localnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

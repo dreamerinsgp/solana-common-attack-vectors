@@ -7,13 +7,13 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-account_data_matching = "G89cLRPVSKmXsYVZVRASfANWpDy84Qy8tPYux5yg6VWV"
+account_data_matching = "E2gntntCv4d3ty7uTJEJhzqPQt6Cz35RgmRNk2gSr1GS"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "localnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
